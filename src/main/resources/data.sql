@@ -1,0 +1,1 @@
+INSERT INTO url (id, name, short_name) VALUES (1, 'www.google.com', 'ahfsghfasg');
