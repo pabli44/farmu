@@ -1,50 +1,38 @@
 package com.pvelilla.farmuoperations.farmuoperations.service.impl;
 
 import com.pvelilla.farmuoperations.farmuoperations.dto.ImageDto;
-import com.pvelilla.farmuoperations.farmuoperations.dto.UrlDto;
+import com.pvelilla.farmuoperations.farmuoperations.entity.Image;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class UrlServiceImplTest {
+class ImageServiceImplTest {
 
 
     private static final Long IMAGE_ID = 1L;
-    private static final String URL_TEST = "www.google.com";
-
     @Mock
-    private UrlServiceImpl urlService;
+    private ImageServiceImpl imageService;
 
-    private UrlDto dto;
+    private ImageDto dto;
 
     @BeforeEach
     void setUp() {
-        dto = new UrlDto();
+        dto = new ImageDto();
         dto.setId(IMAGE_ID);
-        dto.setName(URL_TEST);;
-        dto.setShortName("");
+        dto.setWidth(200);
+        dto.setHeight(150);
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
     void save() {
-        when(urlService.save(dto)).thenReturn(dto);
-        Assert.notNull(urlService.save(dto));
-    }
-
-    @Test
-    void findById() {
-    }
-
-    @Test
-    void deleteById() {
-    }
-
-    @Test
-    void findAll() {
+        when(imageService.save(dto)).thenReturn(dto);
+        Assert.notNull(imageService.save(dto));
     }
 }
