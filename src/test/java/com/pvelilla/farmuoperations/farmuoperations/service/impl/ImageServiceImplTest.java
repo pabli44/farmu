@@ -1,15 +1,12 @@
 package com.pvelilla.farmuoperations.farmuoperations.service.impl;
 
 import com.pvelilla.farmuoperations.farmuoperations.dto.ImageDto;
-import com.pvelilla.farmuoperations.farmuoperations.entity.Image;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class ImageServiceImplTest {

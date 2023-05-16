@@ -1,6 +1,5 @@
 package com.pvelilla.farmuoperations.farmuoperations.service.impl;
 
-import com.pvelilla.farmuoperations.farmuoperations.dto.ImageDto;
 import com.pvelilla.farmuoperations.farmuoperations.dto.UrlDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ class UrlServiceImplTest {
     void setUp() {
         dto = new UrlDto();
         dto.setId(IMAGE_ID);
-        dto.setName(URL_TEST);;
+        dto.setName(URL_TEST);
         dto.setShortName("");
         MockitoAnnotations.openMocks(this);
     }
