@@ -33,7 +33,12 @@ public class UrlServiceImpl implements UrlService {
 
     @Override
     public UrlDto findById(Long id) {
-        UrlDto urlDto = getUrlDto(urlRepository.findById(id).get());
+        UrlDto urlDto = null;
+        boolean op = urlRepository.findById(id).isPresent();
+        if(op)
+            urlDto = getUrlDto(urlRepository.findById(id).get());
+
+
         return urlDto;
     }
 

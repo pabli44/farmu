@@ -11,8 +11,7 @@ public class Utils {
 
     public static String getShortUrl(String originalURL) {
         String encodedURL = Base64.getUrlEncoder().encodeToString(originalURL.getBytes());
-        String shortURL = encodedURL.substring(0, 8);
-        return shortURL;
+        return encodedURL.substring(0, 8);
     }
 
     public static void resizeImage(String inputImagePath, int newWidth, int newHeight){
