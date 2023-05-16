@@ -1,15 +1,11 @@
 package com.pvelilla.farmuoperations.farmuoperations.controller;
 
 import com.pvelilla.farmuoperations.farmuoperations.dto.UrlDto;
-import com.pvelilla.farmuoperations.farmuoperations.entity.Url;
 import com.pvelilla.farmuoperations.farmuoperations.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import static com.pvelilla.farmuoperations.farmuoperations.mapper.UrlMapper.getUrlDto;
-import static com.pvelilla.farmuoperations.farmuoperations.mapper.UrlMapper.getUrlEntity;
 
 @RequestMapping("/url")
 @RestController
@@ -20,7 +16,7 @@ public class UrlController {
 
     @GetMapping("/{id}")
     public UrlDto findById(@PathVariable Long id){
-        return getUrlDto(urlService.findById(id).get());
+        return urlService.findById(id);
     }
 
     @DeleteMapping("/{id}")
@@ -29,8 +25,8 @@ public class UrlController {
     }
 
     @PostMapping
-    public Url save(@RequestBody UrlDto urlDto){
-        return urlService.save(getUrlEntity(urlDto));
+    public UrlDto save(@RequestBody UrlDto urlDto){
+        return urlService.save(urlDto);
     }
 
     @GetMapping

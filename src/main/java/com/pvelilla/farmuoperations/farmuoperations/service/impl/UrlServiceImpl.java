@@ -2,7 +2,7 @@ package com.pvelilla.farmuoperations.farmuoperations.service.impl;
 
 import com.pvelilla.farmuoperations.farmuoperations.dto.UrlDto;
 import com.pvelilla.farmuoperations.farmuoperations.entity.Url;
-import com.pvelilla.farmuoperations.farmuoperations.mapper.UrlMapper;
+import com.pvelilla.farmuoperations.farmuoperations.mapper.AllMapper;
 import com.pvelilla.farmuoperations.farmuoperations.repository.UrlRepository;
 import com.pvelilla.farmuoperations.farmuoperations.service.UrlService;
 import com.pvelilla.farmuoperations.farmuoperations.utils.Utils;
@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.pvelilla.farmuoperations.farmuoperations.mapper.AllMapper.getUrlDto;
+import static com.pvelilla.farmuoperations.farmuoperations.mapper.AllMapper.getUrlEntity;
 
 @Service
 public class UrlServiceImpl implements UrlService {
@@ -21,14 +23,18 @@ public class UrlServiceImpl implements UrlService {
 
 
     @Override
-    public Url save(Url entity) {
+    public UrlDto save(UrlDto urlDto) {
+        Url entity = getUrlEntity(urlDto);
         entity.setShortName(Utils.getShortUrl(entity.getName()));
-        return urlRepository.save(entity);
+        urlRepository.save(entity);
+
+        return getUrlDto(entity);
     }
 
     @Override
-    public Optional<Url> findById(Long id) {
-        return urlRepository.findById(id);
+    public UrlDto findById(Long id) {
+        UrlDto urlDto = getUrlDto(urlRepository.findById(id).get());
+        return urlDto;
     }
 
     @Override
@@ -39,7 +45,7 @@ public class UrlServiceImpl implements UrlService {
     @Override
     public List<UrlDto> findAll() {
         return urlRepository.findAll()
-                .stream().map(UrlMapper::getUrlDto)
+                .stream().map(AllMapper::getUrlDto)
                 .collect(Collectors.toList());
     }
 }

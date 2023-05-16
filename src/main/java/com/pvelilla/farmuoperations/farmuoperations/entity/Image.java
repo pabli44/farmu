@@ -4,20 +4,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "url")
-public class Url {
+@Table(name = "image")
+public class Image {
 
     @Id
     private Long id;
 
-    private String name;
+    private int width;
 
-    @Column(name = "short_name")
-    private String shortName;
+    private int height;
+
 }
